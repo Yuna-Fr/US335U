@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6605134826378545628}
   - component: {fileID: 566937342004029314}
   - component: {fileID: 5374012122963240746}
-  - component: {fileID: 1968650697908321577}
   - component: {fileID: -5440655077824355830}
   m_Layer: 0
   m_Name: Luciole
@@ -32,6 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -2.58, y: 4.19, z: 0.30833244}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -55,6 +55,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 22a0b86f35984ba408a8829d948e9a65, type: 2}
+  - {fileID: 2100000, guid: 32a6784cd2d98f646a019f805d9108be, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,7 +95,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 4240418588198352520}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5685884
   m_Height: 2.0118945
   m_Direction: 1
@@ -111,40 +112,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGlobal: 1
+  m_IsGlobal: 1
   priority: 0
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: d9af5ae1ff7de384e8e67c776bd5e1b1, type: 2}
---- !u!114 &1968650697908321577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4240418588198352520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c2c9d1f1cd32c0488045b3fa3df4a78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zoneRepulsion: 2
-  zoneAlignement: 9
-  zoneAttraction: 30
-  hauteurSol: 0
-  forceRepulsion: 15
-  forceAlignement: 3
-  forceAttraction: 30
-  forceRejetSol: 100
-  target: {x: 0, y: 0, z: 0}
-  forceTarget: 15
-  goToTarget: 0
-  stopToTarget: 0
-  velocity: {x: 0, y: 0, z: 0}
-  maxSpeed: 20
-  minSpeed: 10
-  drawGizmos: 1
-  drawLines: 1
 --- !u!54 &-5440655077824355830
 Rigidbody:
   m_ObjectHideFlags: 0
