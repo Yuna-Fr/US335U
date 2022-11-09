@@ -40,7 +40,11 @@ public class EnemyController : MonoBehaviour
         currentState = state;
         state.EnterState(this);
     }
-
+    public IEnumerator Lost(EnemyController enemy)
+    {
+        yield return new WaitForSeconds(1.2f);
+        enemy.SwitchState(enemy.patrol);
+    }
     void HandleSight(SightStimulus sti, AISense<SightStimulus>.Status evt)
     {
         if (evt == AISense<SightStimulus>.Status.Enter)

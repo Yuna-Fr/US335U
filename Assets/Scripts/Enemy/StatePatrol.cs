@@ -10,6 +10,8 @@ public class StatePatrol : EnemyState
     private Transform[] pts; //points où il passe pendant la patrouille 
     private int destPoint = 0;
 
+    private float distance;
+
     public override void EnterState(EnemyController enemy)
     {
         nav = enemy.GetComponent<NavMeshAgent>();
@@ -21,14 +23,13 @@ public class StatePatrol : EnemyState
         if (pts.Length == 0)// Returns if no points have been set up
             return;
 
-        // Set the agent to go to the currently selected destination.
-        nav.destination = pts[destPoint].position;
+        nav.destination = pts[destPoint].position; // Set the agent to go to the currently selected destination.
 
-        var distance = pts - enemyT;
-        if (nav.destination <= 2) // if near change target
-            destPoint = (destPoint + 1) % pts.Length; // Choose the next point in the array as the destination, cycling to the start if necessary.
+        distance = Vector3.Distance(nav.destination, enemy.transform.position);
+        if (distance <= 1) // if near/at destination, change target
+            destPoint = (destPoint + 1) % pts.Length; // Choose the next point in the array as the destination, cycling to the start if necessary
         
-        if (enemy.see) //if see player = chaseg
+        if (enemy.see) //if see player = chase
             enemy.SwitchState(enemy.chase);
     }
 }
