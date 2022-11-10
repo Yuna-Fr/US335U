@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StateIdle : EnemyState
 {
+
     public override void EnterState(EnemyController enemy)
     {
         enemy.StartCoroutine("Lost");

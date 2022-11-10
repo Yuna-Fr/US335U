@@ -14,6 +14,7 @@ public class StatePatrol : EnemyState
 
     public override void EnterState(EnemyController enemy)
     {
+        enemy.GetComponent<NavMeshAgent>().speed = 3;
         nav = enemy.GetComponent<NavMeshAgent>();
         pts = enemy.points;
     }
