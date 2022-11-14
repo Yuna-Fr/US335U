@@ -11,12 +11,23 @@ public class EnemyController : MonoBehaviour
     public bool see = false;
     public bool hear = false;
 
-      //    STATES    //
+    private NavMeshAgent nav;
+
+    //    ANIMATIONS    //
+    public Animator anim;
+
+    //    STATES    //
     public EnemyState currentState;
     public StateChase chase = new StateChase();
     public StatePatrol patrol = new StatePatrol();
 
     public Transform[] points;
+
+    private Vector3 priorFrameTransform;
+    //public Transform lens;
+
+    public bool IsBeingMoved;
+
 
     void Start()
     {
@@ -26,13 +37,29 @@ public class EnemyController : MonoBehaviour
         GetComponent<AISenseHearing>().AddSenseHandler(new AISense<HearingStimulus>.SenseEventHandler(HandleHearing));
         GetComponent<AISenseHearing>().AddObjectToTrack(player);
 
+        GetComponent<NavMeshAgent>();
+
         currentState = patrol;
         currentState.EnterState(this);
+
+        IsBeingMoved = false;
+        priorFrameTransform = transform.position;
     }
 
     private void Update()
     {
         currentState.UpdateState(this);
+
+        if (Vector3.Distance(transform.position, priorFrameTransform) > 0.5f)
+        {
+            IsBeingMoved = true;
+        }
+        else
+        {
+                IsBeingMoved = false;
+        }
+
+        priorFrameTransform = transform.position;
     }
 
     public void SwitchState(EnemyState state)
@@ -40,18 +67,8 @@ public class EnemyController : MonoBehaviour
         currentState = state;
         state.EnterState(this);
     }
-    public IEnumerator Lost()
-    {   
-        transform.Rotate(0, 45, 0);
-        yield return new WaitForSeconds(1f);
-        transform.Rotate(0, -45, 0);
-        yield return new WaitForSeconds(0.5f);
-        transform.Rotate(0, -45, 0);
 
-        //mettre anim//
 
-        currentState = patrol;
-    }
     void HandleSight(SightStimulus sti, AISense<SightStimulus>.Status evt)
     {
         if (evt == AISense<SightStimulus>.Status.Enter)
