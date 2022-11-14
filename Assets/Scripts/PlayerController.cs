@@ -41,7 +41,6 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         FirstPersonView();
-        CheckEcho();
     }
 
     void MovePlayer()
@@ -88,32 +87,5 @@ public class PlayerController : MonoBehaviour
         var xQuat = Quaternion.AngleAxis(rotation.x, Vector3.up);
         var yQuat = Quaternion.AngleAxis(rotation.y, Vector3.left);
         transform.localRotation = xQuat * yQuat;
-    }
-
-    public AudioMixer mixer;
-    public string MixerParameter = "Undefined Tracked Param";
-    public float MinVal = 0;
-    public float MaxVal = 0;
-
-    private void CheckEcho()//put echo when inside the cave
-    {            
-        //Calcul de la distance au centre de la zone (ne pas oublier de transformer le vecteur centre du repère local au repère global)
-        float distToT = Vector3.Distance(transform.TransformPoint(grottePoint), transform.position);
-        float distanceGrotte = Vector3.Distance(transform.position, grottePoint);
-
-        if ( distanceGrotte < 3)
-        {
-            //La valeur de l'effet : Min + (Max-Min) * distanceNormalisée
-            float effectVal = MinVal + (MaxVal - MinVal) * (1.0f - (distToT / 3));
-            //On ajoute le paramètre au mixer
-            mixer.SetFloat(MixerParameter, effectVal);
-        }
-        //else
-        //desactive
-    }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(grottePoint, 3);
     }
 }

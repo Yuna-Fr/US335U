@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 566937342004029314}
   - component: {fileID: 5374012122963240746}
   - component: {fileID: -5440655077824355830}
+  - component: {fileID: 1182199854809240432}
   m_Layer: 0
   m_Name: Luciole
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 4240418588198352520}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -2.58, y: 4.19, z: 0.30833244}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.05, y: 0.03, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -64,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 32a6784cd2d98f646a019f805d9108be, type: 2}
+  - {fileID: 2100000, guid: 7076d461a6ba6e84fbcc277cb3286fc7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -133,3 +134,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 64
   m_CollisionDetection: 0
+--- !u!114 &1182199854809240432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4240418588198352520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a0609432013749408a4eb00c9074139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoneRepulsion: 2
+  zoneAlignement: 9
+  zoneAttraction: 30
+  hauteurSol: 0
+  forceRepulsion: 15
+  forceAlignement: 3
+  forceAttraction: 20
+  forceRejetSol: 100
+  target: {x: 0, y: 0, z: 0}
+  forceTarget: 15
+  goToTarget: 0
+  stopToTarget: 0
+  velocity: {x: 0, y: 0, z: 0}
+  maxSpeed: 7
+  minSpeed: 2
