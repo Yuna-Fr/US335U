@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
     const string xAxis = "Mouse X";
     const string yAxis = "Mouse Y";
 
-    //Grotte Echo//
-    private Vector3 grottePoint = new Vector3(24, 1, 10);
+    //Bottles//
+    public int nbBottles = 0;
 
     void Start()
     {
@@ -41,6 +41,11 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         FirstPersonView();
+
+        if( nbBottles >= 8)
+        {
+            Debug.Log("Win");
+        }
     }
 
     void MovePlayer()
@@ -56,7 +61,6 @@ public class PlayerController : MonoBehaviour
         // Sauter
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
         {
-            //n.NoiseLevel = 1;
             playerRb.AddForce(Vector3.up * 20, ForceMode.Impulse);
             isOnGround = false;
         }

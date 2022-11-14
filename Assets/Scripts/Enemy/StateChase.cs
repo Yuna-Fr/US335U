@@ -4,7 +4,6 @@ using UnityEngine.AI;
 
 public class StateChase : EnemyState
 {
-
     public override void EnterState(EnemyController enemy)
     {
         enemy.GetComponent<NavMeshAgent>().speed = 7;
